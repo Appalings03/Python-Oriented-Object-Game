@@ -137,8 +137,8 @@ class Game:
 
 # Here we're creating an object of our Game class 
 # and calling on its take_turn() method
-#game = Game()
-#game.take_turn()
+game = Game()
+game.take_turn()
 
 class RoomTests:
     def __inti__(self):
@@ -179,6 +179,6 @@ class RoomTests:
         print(self.room_2.get_game_object_names() == [])
 
 
-tests = RoomTests()
+'''tests = RoomTests()
 tests.testt_check_code()
-tests.test_get_game_object_names()
+tests.test_get_game_object_names()'''
