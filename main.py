@@ -41,7 +41,6 @@ class Room:
             names.append(object.name)
         return names
 
-
 class Game:
 
     def __init__(self):
@@ -88,6 +87,16 @@ class Game:
         if selection >= 1 and selection <= 5:
             self.select_object(selection - 1)
             self.take_turn()
+        else:
+            is_code_correct = self.gess_code(selection)
+            if is_code_correct:
+                print("Congratulation, youwin!")
+            else:
+                if self.attempts == 3:
+                    print("Game over, you ran out of guesses. Better Luck next time!")
+                else:
+                    print(f"Incorrect, you have used {self.attempts}/3 attemps\n")
+                    self.take_turn()
 
     # Shows the option to enter the code or interact further with the objects in the room
     def get_room_prompt(self):
@@ -118,7 +127,14 @@ class Game:
             return object.touch()
         else:
             return object.sniff()
-        
+            
+    def gess_code(self,code):
+        if self.room.check_code(code):
+            return True
+        else: 
+            self.attempts += 1
+            return False 
+
 # Here we're creating an object of our Game class 
 # and calling on its take_turn() method
 game = Game()
